@@ -35,7 +35,7 @@ body {
 .video {
 	max-width: 800px;
 	max-height: 450px;
-	margin-left: 23%;
+	text-align: center;
 }
 
 .resp-container {
@@ -3479,6 +3479,17 @@ input, select, textarea {
 
 		}
 
+
+.whiteHeader{
+	color: #f7f7f7;
+	font-weight: bold;
+}
+#bannerHead{
+	background-color: rgba(30, 165, 255, 0.9);
+	border-radius: 10px;
+	size: auto;
+
+}
 /* Banner */
 
 	#banner {
@@ -3539,6 +3550,14 @@ input, select, textarea {
 				-webkit-transition: -webkit-transform 0.75s ease-out, opacity 1.25s ease;
 				-ms-transition: -ms-transform 0.75s ease-out, opacity 1.25s ease;
 				transition: transform 0.75s ease-out, opacity 1.25s ease;
+				background-image:
+    /* top, transparent black */
+    linear-gradient(
+      rgba(0, 0, 0, 0.85),
+      rgba(30, 165, 255, 0.45)
+    ),
+    /* coin image */
+    url("/images/banner.jpg");
 			}
 
 			#banner .content.secondary {
