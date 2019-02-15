@@ -35,8 +35,16 @@ body {
   line-height: 1;
 }
 
+.reveal > .navPanelToggle::before {
+	filter: invert(100%);
+}
+
+.alt > .navPanelToggle::before {
+	filter: invert(0);
+}
+
 .flip-container {
-        margin: 50px;
+        margin: 5rem;
         perspective: 1000;
         display: inline-block;
     }
@@ -2046,7 +2054,8 @@ input[type="submit"]:hover,
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-  background-color: rgba(27, 206, 165, 0.1);
+  background-color: rgba(0, 0, 0, 0.05);
+
 }
 
 input[type="submit"]:hover:active,
@@ -2054,7 +2063,6 @@ input[type="submit"]:hover:active,
 			input[type="button"]:hover:active,
 			button:hover:active,
 			.button:hover:active {
-  background-color: rgba(27, 206, 165, 0.25);
 }
 
 input[type="submit"].primary,
@@ -3302,8 +3310,7 @@ body {
 #header > .logo {
   position: absolute;
   left: 1rem;
-  padding: 5px;
-  padding-bottom: 30px;
+
 }
 
 #header > .logo strong {
@@ -3426,6 +3433,7 @@ body {
   -webkit-animation: reveal-header 0.5s ease;
   -ms-animation: reveal-header 0.5s ease;
   animation: reveal-header 0.5s ease;
+
 }
 
 #header.alt {
@@ -3469,6 +3477,7 @@ body {
   line-height: inherit;
   padding: 0 1rem;
   outline: 0;
+
 }
 
 #header > .navPanelToggle:before {
