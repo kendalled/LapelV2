@@ -2593,11 +2593,15 @@ ul.actions.fit.stacked {
   box-shadow: 0px 0px 3px rgba(84, 100, 119, 0.55);
   border-radius: 10px;
   margin: 1rem;
-  max-width: 200rem;
+  max-width: 80rem;
 }
 
 .myIcon2 {
-  padding: 8px;
+	padding: 10px;
+  box-shadow: 0px 0px 3px rgba(84, 100, 119, 0.55);
+  border-radius: 10px;
+  margin: 1rem;
+
 }
 
 .myIcon:hover {
