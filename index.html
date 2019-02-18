@@ -136,11 +136,11 @@
 							<div class="flip-container">
 								<div class="card">
 									<div class="front">
-										<img class="fit" src="images/corp-back.png" alt="back of custom corporate challenge coin" />
+										<img class="fit lazy" src="images/corp-back.png" alt="back of custom corporate challenge coin" />
 									</div>
 
 									<div class="back">
-										<img src="images/corp-front.png" alt="front of custom corporate challenge coin" />
+										<img class="lazy" src="images/corp-front.png" alt="front of custom corporate challenge coin" />
 									</div>
 								</div>
 							</div>
@@ -174,11 +174,11 @@
 							<div class="flip-container">
 								<div class="card">
 									<div class="front">
-										<img class="fit" src="images/vampire-back.png" alt="back of custom vampire challenge coin" />
+										<img class="fit lazy" src="images/vampire-back.png" alt="back of custom vampire challenge coin" />
 									</div>
 
 									<div class="back">
-										<img src="images/vampire-front.png" alt="front of custom vampire challenge coin" />
+										<img class="lazy" src="images/vampire-front.png" alt="front of custom vampire challenge coin" />
 									</div>
 								</div>
 							</div>
@@ -211,11 +211,11 @@
 							<div class="flip-container">
 								<div class="card">
 									<div class="front">
-										<img class="fit" src="images/cat-back.png" alt="back of custom military challenge coin" />
+										<img class="fit lazy" src="images/cat-back.png" alt="back of custom military challenge coin" />
 									</div>
 
 									<div class="back">
-										<img src="images/cat-front.png" alt="front of custom military challenge coin" />
+										<img class="lazy" src="images/cat-front.png" alt="front of custom military challenge coin" />
 									</div>
 								</div>
 							</div>
@@ -242,7 +242,7 @@
 				<p><b>Our Guarantee</b>: You will have your custom challenge coins within 7-10 days from ordering, in perfect condition.</p>
 				<hr />
 				<h3>We proudly ship with FedEx Priority at no cost to you. This ensures you get your challenge coins when you need them.</h3>
-				<a href="#quote" class="scrolly noUL" title="Scrolls to Quote Form"><img src="images/shipicon.png" alt="Shipping Icon" style="filter: invert(150%); max-width: 10em; height: auto;" /></a>
+				<a href="#quote" class="scrolly noUL" title="Scrolls to Quote Form"><img class="lazy" src="images/shipicon.png" alt="Shipping Icon" style="filter: invert(150%); max-width: 10em; height: auto;" /></a>
 			</header>
 
 		</section>
@@ -348,11 +348,18 @@
 	<script src="assets/js/jquery.selectorr.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
-
+	<script src="/assets/js/lazyload.min.js"></script>
 	<script src="assets/js/browser.min.js"></script>
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+
+<!-- Initializing LazyLoad-->
+	<script>
+		var myLazyLoad = new LazyLoad({
+			elements_selector: ".lazy"
+		});
+	</script>
 
 </body>
 
