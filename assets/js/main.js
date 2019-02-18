@@ -4,155 +4,167 @@
 	License: pixelarity.com/license
 */
 
+
 (function($) {
 
-	var	$window = $(window),
-		$body = $('body'),
-		$header = $('#header'),
-		$banner = $('#banner');
+  var $window = $(window),
+    $body = $('body'),
+    $header = $('#header'),
+    $banner = $('#banner');
 
-	// Breakpoints.
-		breakpoints({
-			xlarge:   [ '1281px',  '1680px' ],
-			large:    [ '981px',   '1280px' ],
-			medium:   [ '737px',   '980px'  ],
-			small:    [ '481px',   '736px'  ],
-			xsmall:   [ '361px',   '480px'  ],
-			xxsmall:  [ null,      '360px'  ]
-		});
+  // Breakpoints.
+  breakpoints({
+    xlarge: ['1281px', '1680px'],
+    large: ['981px', '1280px'],
+    medium: ['737px', '980px'],
+    small: ['481px', '736px'],
+    xsmall: ['361px', '480px'],
+    xxsmall: [null, '360px']
+  });
 
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
+  // Play initial animations on page load.
+  $window.on('load', function() {
+    window.setTimeout(function() {
+      $body.removeClass('is-preload');
+    }, 100);
+  });
 
-	// Scrolly.
-		$('.scrolly').scrolly({
-			offset: function() { return $header.height() - 5; }
-		});
 
-	// Header.
-		if ($banner.length > 0
-		&&	$header.hasClass('alt')) {
+  // Scrolly.
+  $('.scrolly').scrolly({
+    offset: function() {
+      return $header.height() - 5;
+    }
+  });
 
-			$window.on('resize', function() { $window.trigger('scroll'); });
+  // Header.
+  if ($banner.length > 0 &&
+    $header.hasClass('alt')) {
 
-			$banner.scrollex({
-				bottom:		$header.outerHeight(),
-				terminate:	function() { $header.removeClass('alt'); },
-				enter:		function() { $header.addClass('alt'); },
-				leave:		function() { $header.removeClass('alt'); $header.addClass('reveal'); }
-			});
+    $window.on('resize', function() {
+      $window.trigger('scroll');
+    });
 
-		}
+    $banner.scrollex({
+      bottom: $header.outerHeight(),
+      terminate: function() {
+        $header.removeClass('alt');
+      },
+      enter: function() {
+        $header.addClass('alt');
+      },
+      leave: function() {
+        $header.removeClass('alt');
+        $header.addClass('reveal');
+      }
+    });
 
-	// Dropdowns.
-		$('#nav > ul').dropotron({
-			alignment: 'right',
-			hideDelay: 350,
-			baseZIndex: 100000
-		});
+  }
 
-	// Menu.
-		$('<a href="#navPanel" class="navPanelToggle">Menu</a>')
-			.appendTo($header);
+  // Dropdowns.
+  $('#nav > ul').dropotron({
+    alignment: 'right',
+    hideDelay: 350,
+    baseZIndex: 100000
+  });
 
-		$(	'<div id="navPanel">' +
-				'<nav>' +
-					$('#nav') .navList() +
-				'</nav>' +
-				'<a href="#navPanel" class="close"></a>' +
-			'</div>')
-				.appendTo($body)
-				.panel({
-					delay: 500,
-					hideOnClick: true,
-					hideOnSwipe: true,
-					resetScroll: true,
-					resetForms: true,
-					target: $body,
-					visibleClass: 'is-navPanel-visible',
-					side: 'right'
-				});
+  // Menu.
+  $('<a href="#navPanel" class="navPanelToggle">Menu</a>')
+    .appendTo($header);
 
-	// Banner.
-		if ($banner.length > 0) {
+  $('<div id="navPanel">' +
+      '<nav>' +
+      $('#nav').navList() +
+      '</nav>' +
+      '<a href="#navPanel" class="close"></a>' +
+      '</div>')
+    .appendTo($body)
+    .panel({
+      delay: 500,
+      hideOnClick: true,
+      hideOnSwipe: true,
+      resetScroll: true,
+      resetForms: true,
+      target: $body,
+      visibleClass: 'is-navPanel-visible',
+      side: 'right'
+    });
 
-			// Edge + IE: Workaround for object-fit.
-				if (browser.name == 'edge'
-				||	browser.name == 'ie') {
+  // Banner.
+  if ($banner.length > 0) {
 
-					var $video = $banner.find('video'),
-						v = $video[0],
-						t, f;
+    // Edge + IE: Workaround for object-fit.
+    if (browser.name == 'edge' ||
+      browser.name == 'ie') {
 
-					// Handler function.
-						var f = function() {
+      var $video = $banner.find('video'),
+        v = $video[0],
+        t, f;
 
-							var w = v.videoWidth, h = v.videoHeight,
-								pw = $window.width(), ph = $window.height(),
-								nw, nh, x;
+      // Handler function.
+      var f = function() {
 
-							// Calculate new width, height.
-								if (pw > ph) {
+        var w = v.videoWidth,
+          h = v.videoHeight,
+          pw = $window.width(),
+          ph = $window.height(),
+          nw, nh, x;
 
-									nw = pw;
-									nh = (nw / w) * h;
+        // Calculate new width, height.
+        if (pw > ph) {
 
-								}
-								else {
+          nw = pw;
+          nh = (nw / w) * h;
 
-									nh = ph;
-									nw = (nh / h) * w;
+        } else {
 
-								}
+          nh = ph;
+          nw = (nh / h) * w;
 
-							// Set width, height.
-								if (nw < pw) {
+        }
 
-									v.style.width = '100vw';
-									v.style.height = 'auto';
+        // Set width, height.
+        if (nw < pw) {
 
-								}
-								else
-									v.style.width = nw + 'px';
+          v.style.width = '100vw';
+          v.style.height = 'auto';
 
-								if (nh < ph) {
-									v.style.height = '100vh';
-									v.style.width = 'auto';
-								}
-								else
-									v.style.height = nh + 'px';
+        } else
+          v.style.width = nw + 'px';
 
-							// Set position (bottom-right).
-								v.style.top = v.style.bottom = v.style.left = v.style.right = 'auto';
-								v.style.bottom = '0';
-								v.style.right = '0';
+        if (nh < ph) {
+          v.style.height = '100vh';
+          v.style.width = 'auto';
+        } else
+          v.style.height = nh + 'px';
 
-						};
+        // Set position (bottom-right).
+        v.style.top = v.style.bottom = v.style.left = v.style.right = 'auto';
+        v.style.bottom = '0';
+        v.style.right = '0';
 
-					// Do an initial call of the handler.
-						(f)();
+      };
 
-					// Add event listeners.
-						$window.on('resize load', function() {
+      // Do an initial call of the handler.
+      (f)();
 
-							clearTimeout(t);
+      // Add event listeners.
+      $window.on('resize load', function() {
 
-							t = setTimeout(f, 125);
+        clearTimeout(t);
 
-						});
+        t = setTimeout(f, 125);
 
-				}
+      });
 
-		}
+    }
 
-	// Tabs.
-		$('.tabs').selectorr({
-			titleSelector: 'h3',
-			delay: 250
-		});
+  }
+
+  // Tabs.
+  $('.tabs').selectorr({
+    titleSelector: 'h3',
+    delay: 250
+  });
 
 })(jQuery);

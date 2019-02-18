@@ -12,6 +12,38 @@
 	<meta name="description" content="Custom Challenge Coins Online offers same-day quotes, professional craftsmanship, and complimentary graphic design with all orders." />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
 	<link rel="stylesheet" href="assets/css/main.css" />
+	<script type="text/javascript">
+
+		var lazyImages = {
+			init: function() {
+				revealNextImage();
+
+				function replaceThisLazyImage(element, bgImage) {
+					if (element != null && element != undefined) {
+						var imagePath = $(element).attr("data-image-path");
+						var image = new Image();
+						$(image)
+							.load(function() {
+								if (bgImage) {
+									$(element).css("background-image", "url(" + imagePath + ")");
+								} else {
+									$(element).attr("src", imagePath);
+								}
+								$(element).removeClass('lazyimage');
+								revealNextImage();
+							})
+							.attr('src', imagePath)
+					}
+				}
+
+				function revealNextImage() {
+					replaceThisLazyImage($('.lazyimage:not(img):first')[0], true);
+					replaceThisLazyImage($('img.lazyimage:first')[0], false);
+				}
+			}
+		};
+		$(window).load(lazyImages.init);
+	</script>
 </head>
 
 <body class="is-preload">
@@ -136,11 +168,11 @@
 							<div class="flip-container">
 								<div class="card">
 									<div class="front">
-										<img lazyload="on" class="fit" src="images/corp-back.png" alt="back of custom corporate challenge coin" />
+										<img class="fit lazyimage" src="images/corp-back-smaller.png" data-image-path="/images/corp-back.png" alt="back of custom corporate challenge coin" />
 									</div>
 
 									<div class="back">
-										<img lazyload="on" class="fit" src="images/corp-front.png" alt="front of custom corporate challenge coin" />
+										<img class="fit lazyimage" src="images/corp-front-smaller.png" data-image-path="/images/corp-front.png" alt="front of custom corporate challenge coin" />
 									</div>
 								</div>
 							</div>
@@ -174,11 +206,11 @@
 							<div class="flip-container">
 								<div class="card">
 									<div class="front">
-										<img lazyload="on" class="fit" src="images/vampire-back.png" alt="back of custom vampire challenge coin" />
+										<img class="fit lazyimage" src="images/vampire-back-smaller.png" data-image-path="/images/vampire-back.png" alt="back of custom vampire challenge coin" />
 									</div>
 
 									<div class="back">
-										<img lazyload="on" class="fit" src="images/vampire-front.png" alt="front of custom vampire challenge coin" />
+										<img class="fit lazyimage" src="images/vampire-front-smaller.png" data-image-path="/images/vampire-front.png" alt="front of custom vampire challenge coin" />
 									</div>
 								</div>
 							</div>
@@ -211,11 +243,11 @@
 							<div class="flip-container">
 								<div class="card">
 									<div class="front">
-										<img lazyload="on" class="fit" src="images/cat-back.png" alt="back of custom military challenge coin" />
+										<img class="fit lazyimage" src="images/cat-back-smaller.png" data-image-path="/images/cat-back.png" alt="back of custom military challenge coin" />
 									</div>
 
 									<div class="back">
-										<img lazyload="on" class="fit" src="images/cat-front.png" alt="front of custom military challenge coin" />
+										<img class="fit lazyimage" src="images/cat-front-smaller.png" data-image-path="/images/cat-front.png" alt="front of custom military challenge coin" />
 									</div>
 								</div>
 							</div>
@@ -242,7 +274,7 @@
 				<p><b>Our Guarantee</b>: You will have your custom challenge coins within 7-10 days from ordering, in perfect condition.</p>
 				<hr />
 				<h3>We proudly ship with FedEx Priority at no cost to you. This ensures you get your challenge coins when you need them.</h3>
-				<a href="#quote" class="scrolly noUL" title="Scrolls to Quote Form"><img lazyload="on" src="images/shipicon.png" alt="Shipping Icon" style="filter: invert(150%); max-width: 10em; height: auto;" /></a>
+				<a href="#quote" class="scrolly noUL" title="Scrolls to Quote Form"><img class="lazyimage" src="images/shipicon.png" alt="Shipping Icon" style="filter: invert(150%); max-width: 10em; height: auto;" /></a>
 			</header>
 
 		</section>
@@ -260,13 +292,17 @@
 					<form method="post" action="#">
 						<div class="row gtr-uniform">
 							<div class="col-6 col-12-xsmall">
-								<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
+								<label for="demo-name">Name</label>
+								<input type="text" name="demo-name" id="demo-name" label="Name" value="" placeholder="Name" />
+
 							</div>
 							<div class="col-6 col-12-xsmall">
+								<label for="demo-email">E-Mail</label>
 								<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
 							</div>
 							<!-- Break -->
 							<div class="col-12">
+								<label for="demo-category">Select One</label>
 								<select name="demo-category" id="demo-category">
 									<option value="">- Color -</option>
 									<option value="1">Monochrome</option>
@@ -299,6 +335,7 @@
 							</div>
 							<!-- Break -->
 							<div class="col-12">
+								<label for="demo-message">Design Notes (Optional)</label>
 								<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
 							</div>
 							<!-- Break -->
