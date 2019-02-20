@@ -2044,9 +2044,9 @@ input[type="submit"],
 	input[type="button"],
 	button,
 	.button {
-  background-color: transparent;
-  box-shadow: inset 0 0 0 3px #F3A543;
-  color: #F3A543 !important;
+  background-color: #1ea5ff;
+  box-shadow: inset 0 0 0 3px #1ea5ff;
+  color: white !important;
 }
 
 input[type="submit"]:hover,
@@ -2055,6 +2055,7 @@ input[type="submit"]:hover,
 		button:hover,
 		.button:hover {
   background-color: rgba(0, 0, 0, 0.05);
+  color: white;
 
 }
 
@@ -2063,6 +2064,7 @@ input[type="submit"]:hover:active,
 			input[type="button"]:hover:active,
 			button:hover:active,
 			.button:hover:active {
+
 }
 
 input[type="submit"].primary,
