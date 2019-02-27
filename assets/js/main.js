@@ -1,7 +1,6 @@
 /*
-	Hypothesis by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
+	Kendall Jackson
+  https://kendalled.github.io/
 */
 
 
@@ -28,6 +27,9 @@
       $body.removeClass('is-preload');
     }, 100);
   });
+
+
+
 
 
   // Scrolly.
